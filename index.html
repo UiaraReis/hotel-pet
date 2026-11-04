@@ -21,6 +21,43 @@
     <main>
         <section id="reservas">
             <h2>Gerenciamento de Reservas</h2>
+            <!-- Campo de busca da Semana 2 -->
+            <input type="text" id="campoBusca" placeholder="Pesquisar reserva..." onkeyup="realizarBusca()">
+
+            <!-- Tabela de Reservas (Semana 3) -->
+            <table border="1" id="tabelaReservas">
+                <thead>
+                <tr>
+                    <th>Pet</th>
+                    <th>Tutor</th>
+                    <th>Acomodação</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="item-lista">
+                    <td>Thor</td>
+                    <td>Alexia</td>
+                    <td>Box Premium</td>
+                    <td><button onclick="editarReserva(this)">Editar</button></td>
+                </tr>
+                <tr class="item-lista">
+                    <td>Mel</td>
+                    <td>Isadora</td>
+                    <td>Suíte Felina</td>
+                    <td><button onclick="editarReserva(this)">Editar</button></td>
+                </tr>
+                <tr class="item-lista">
+                    <td>Rex</td>
+                    <td>Lexia</td>
+                    <td>Quarto Standard</td>
+                    <td><button onclick="editarReserva(this)">Editar</button></td>
+                </tr>
+                </tbody>
+            </table>
             <p>Visão de controle para clientes, funcionários e gerentes.</p>
         </section>
     </main>
+    <script src="script.js"></script>
+</body>
+</html>
