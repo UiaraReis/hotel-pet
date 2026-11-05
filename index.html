@@ -4,60 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Pet - Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Hotel Pet - Painel de Controle</h1>
-        <nav>
-            <ul>
-                <li><a href="#reservas">Reservas</a></li>
-                <li><a href="#pets">Pets</a></li>
-                <li><a href="#usuarios">Usuários</a></li>
-                <li><a href="#configuracoes">Configurações</a></li>
-            </ul>
-        </nav>
-    </header>
+<aside class="menu">
+    <h1>Hotel Pet</h1>
+    <nav>
+        <button id="menu-pets" onclick="mostrarTela('pets')">Pet</button>
+        <button id="menu-usuarios" onclick="mostrarTela('usuarios')">Usuários</button>
+        <button id="menu-configuracoes" onclick="mostrarTela('configuracoes')">Configurações</button>
+        <button id="menu-reservas" class="ativo" onclick="mostrarTela('reservas')">Reservas</button>
+    </nav>
+</aside>
+
+<div class="conteudo">
+    <header class="topo">João da Silva (Gerente)</header>
 
     <main>
-        <section id="reservas">
-            <h2>Gerenciamento de Reservas</h2>
-            <!-- Campo de busca da Semana 2 -->
-            <input type="text" id="campoBusca" placeholder="Pesquisar reserva..." onkeyup="realizarBusca()">
+        <!-- Reservas -->
+        <section id="reservas" class="tela">
+            <h2>Reservas</h2>
+            <button>+ Nova reserva</button>
 
-            <!-- Tabela de Reservas (Semana 3) -->
+            <div class="filtros">
+                <input type="text" id="filtroId" placeholder="Id">
+                <input type="text" id="filtroProprietario" placeholder="Proprietário">
+                <input type="text" id="filtroPet" placeholder="Pet">
+                <select id="filtroStatus">
+                    <option value="">Status</option>
+                    <option>Reservada</option>
+                    <option>Em progresso</option>
+                    <option>Finalizada</option>
+                </select>
+                <button onclick="realizarBusca()">Pesquisar</button>
+                <button onclick="limparBusca()">Limpar</button>
+            </div>
+
             <table border="1" id="tabelaReservas">
                 <thead>
-                <tr>
-                    <th>Pet</th>
-                    <th>Tutor</th>
-                    <th>Acomodação</th>
-                    <th>Ações</th>
-                </tr>
+                <tr><th>Id</th><th>Pet</th><th>Proprietário</th><th>Chegada</th><th>Partida</th><th>Status</th><th>Total</th><th>Ações</th></tr>
                 </thead>
                 <tbody>
                 <tr class="item-lista">
-                    <td>Thor</td>
-                    <td>Alexia</td>
-                    <td>Box Premium</td>
+                    <td>12349984501</td><td>Max</td><td>Alexia</td><td>02/05/2021</td><td>07/05/2021</td><td>Reservada</td><td>R$ 40,00</td>
                     <td><button onclick="editarReserva(this)">Editar</button></td>
                 </tr>
                 <tr class="item-lista">
-                    <td>Mel</td>
-                    <td>Isadora</td>
-                    <td>Suíte Felina</td>
+                    <td>12349984502</td><td>Ginger</td><td>Isadora</td><td>02/05/2021</td><td>07/05/2021</td><td>Em progresso</td><td>R$ 40,00</td>
                     <td><button onclick="editarReserva(this)">Editar</button></td>
                 </tr>
                 <tr class="item-lista">
-                    <td>Rex</td>
-                    <td>Lexia</td>
-                    <td>Quarto Standard</td>
+                    <td>12349984503</td><td>Rex</td><td>Leticia</td><td>02/05/2021</td><td>07/05/2021</td><td>Finalizada</td><td>R$ 40,00</td>
                     <td><button onclick="editarReserva(this)">Editar</button></td>
                 </tr>
                 </tbody>
             </table>
-            <p>Visão de controle para clientes, funcionários e gerentes.</p>
+        </section>
+
+        <!-- Pets -->
+        <section id="pets" class="tela oculta">
+            <h2>Pets</h2>
+            <div class="filtros">
+                <input type="text" id="buscaPets" placeholder="Pesquisar pet..." onkeyup="buscarTabela('buscaPets', 'tabelaPets')">
+            </div>
+
+            <table border="1" id="tabelaPets">
+                <thead>
+                <tr><th>Nome</th><th>Tipo</th><th>Raça</th><th>Tamanho</th><th>Proprietário</th><th>Ações</th></tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Max</td><td>Cachorro</td><td>Labrador</td><td>Grande</td><td>Alexia</td>
+                    <td><button onclick="editarPet(this)">Editar</button> <button onclick="excluirLinha(this)">Excluir</button></td>
+                </tr>
+                <tr>
+                    <td>Ginger</td><td>Gato</td><td>Siamês</td><td>Pequeno</td><td>Isadora</td>
+                    <td><button onclick="editarPet(this)">Editar</button> <button onclick="excluirLinha(this)">Excluir</button></td>
+                </tr>
+                <tr>
+                    <td>Rex</td><td>Cachorro</td><td>Poodle</td><td>Médio</td><td>Leticia</td>
+                    <td><button onclick="editarPet(this)">Editar</button> <button onclick="excluirLinha(this)">Excluir</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Usuários -->
+        <section id="usuarios" class="tela oculta">
+            <h2>Usuários</h2>
+            <div class="filtros">
+                <input type="text" id="buscaUsuarios" placeholder="Pesquisar usuário..." onkeyup="buscarTabela('buscaUsuarios', 'tabelaUsuarios')">
+            </div>
+
+            <table border="1" id="tabelaUsuarios">
+                <thead>
+                <tr><th>Nome</th><th>E-mail</th><th>Função</th></tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Alexia</td><td>alexia@email.com</td>
+                    <td>
+                        <select onchange="trocarFuncao(this)">
+                            <option selected>Cliente</option>
+                            <option>Funcionário</option>
+                            <option>Gerente</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Isadora</td><td>isadora@email.com</td>
+                    <td>
+                        <select onchange="trocarFuncao(this)">
+                            <option>Cliente</option>
+                            <option selected>Funcionário</option>
+                            <option>Gerente</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Leticia</td><td>leticia@email.com</td>
+                    <td>
+                        <select onchange="trocarFuncao(this)">
+                            <option>Cliente</option>
+                            <option>Funcionário</option>
+                            <option selected>Gerente</option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p id="avisoUsuarios"></p>
+        </section>
+
+        <!-- Configurações -->
+        <section id="configuracoes" class="tela oculta">
+            <h2>Configurações</h2>
+            <div class="campos">
+                <label for="valorDiaria">Valor da diária (R$)</label>
+                <input type="number" id="valorDiaria" value="40" min="0" step="0.01">
+
+                <label for="numeroVagas">Número de vagas disponíveis</label>
+                <input type="number" id="numeroVagas" value="20" min="0">
+
+                <button onclick="salvarConfiguracoes()">Salvar alterações</button>
+                <p id="avisoConfig"></p>
+            </div>
         </section>
     </main>
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
