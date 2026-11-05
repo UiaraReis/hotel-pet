@@ -10,9 +10,9 @@ O Hotel Pet é um sistema de gerenciamento de estadia de pets. Nesta etapa foi d
 
 - **Navegação:** o menu lateral troca entre as telas de Reservas, Pets, Usuários e Configurações.
 - **Reservas:** busca por id, proprietário, pet e status, com os botões Pesquisar e Limpar. O gerente pode editar as reservas, inclusive as finalizadas.
-- *Pets:* busca, edição e exclusão de pets.
-- *Usuários:* busca e troca da função do usuário entre cliente, funcionário e gerente.
-- *Configurações:* alteração do valor da diária e do número de vagas disponíveis.
+- **Pets:** busca, edição e exclusão de pets.
+- **Usuários:** busca e troca da função do usuário entre cliente, funcionário e gerente.
+- **Configurações:** alteração do valor da diária e do número de vagas disponíveis.
 
 ## Como abrir
 
